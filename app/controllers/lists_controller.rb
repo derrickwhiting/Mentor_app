@@ -1,11 +1,11 @@
 class ListsController < ApplicationController
   before_action :find_list, only: [:show, :edit, :update, :destroy]
   def index
-    @lists = List.all 
+    @lists = current_user.lists.all
   end
 
   def show
-
+    @items = @list.items
   end
 
   def new
@@ -14,6 +14,7 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(list_params)
+    @list.user_id = current_user.id
     if @list.save
       redirect_to list_path(@list)
     else
@@ -45,10 +46,10 @@ class ListsController < ApplicationController
   private
 
   def list_params
-    params.require(:list).permit(:name, :description, :user_id, :number_of_likes)
+    params.require(:list).permit(:name, :description, :number_of_likes)
   end
 
   def find_list
-    @list = List.find(params[:id])
+    @list = current_user.lists.where(id: params[:id]).first
   end
 end

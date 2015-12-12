@@ -1,2 +1,17 @@
 <h1>Lists#index</h1>
 <p>Find me in app/views/lists/index.html.erb</p>
+<%= render(partial:'layouts/navbar') %>
+<% if @lists.any? %>
+  <ul>
+    <% @lists.each do |list| %>
+      <li>
+        <%= link_to list.name, list_path(list) %>
+        <%= list.description %>
+        <%= list.number_of_likes %>
+      </li>
+    <% end %>
+  </ul>
+  <% else %>
+    <h3>You have no lists to choose from, go ahead and ADD one</h3> 
+    <%= link_to 'Create your first BucketList', new_list_path %> 
+<% end %>

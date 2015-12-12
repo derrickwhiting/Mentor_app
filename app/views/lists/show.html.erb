@@ -1,2 +1,25 @@
-<h1>Lists#show</h1>
+<h1>List#show</h1>
 <p>Find me in app/views/lists/show.html.erb</p>
+
+<%= @list.name %>
+<br />
+<%= @list.description %>
+<br />
+<%= @list.number_of_likes %>
+
+
+<%= render(partial:'layouts/navbar') %>
+<% if @items.any? %>
+  <ul>
+    <% @items.each do |item| %>
+      <li>
+        <%= link_to item.name, item_path(item) %>
+        <%= item.status %>
+        <%= item.number_of_likes %>
+      </li>
+    <% end %>
+  </ul>
+  <% else %>
+    <h3>You have no Items to choose from, go ahead and ADD one</h3> 
+    <%= link_to 'Add your first item', new_item_path %> 
+<% end %>

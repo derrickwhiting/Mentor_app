@@ -1,15 +1,17 @@
 <nav>
     <div class="nav-wrapper">
-      <a href="/" class="brand-logo">Land List</a>
+      <a href="/" class="brand-logo">BucketList</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <% if current_user %>
-          <li><%= link_to 'View List' , realtor_listings_path(current_realtor) %></li>
-          <li><%= link_to 'View Item', realtor_inqueries_path(current_realtor) %></li>
-          <li><%= link_to 'Edit Profile', edit_realtor_registration_path %></li>
-          <li><%= link_to 'Signout', destroy_realtor_session_path, method: :delete %></li>
+          <li><%= link_to 'View Lists' , lists_path %></li>
+          <li><%= link_to 'View Items', items_path %></li>
+          <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
+          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+          <li><%= link_to 'Create List', new_list_path %></li>
         <% else %>
           <li><%= link_to 'Sign In', new_user_session_path %></li>
           <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+          <li><%= link_to 'About', root_path %></li>
         <% end %>
       </ul>
     </div>
