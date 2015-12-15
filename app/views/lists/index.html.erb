@@ -1,5 +1,3 @@
-<h1>Lists#index</h1>
-<p>Find me in app/views/lists/index.html.erb</p>
 <%= render(partial:'layouts/navbar') %>
 <% if @lists.any? %>
   <ul>
@@ -12,6 +10,7 @@
     <% end %>
   </ul>
   <% else %>
-    <h3>You have no lists to choose from, go ahead and ADD one</h3> 
-    <%= link_to 'Create your first BucketList', new_list_path %> 
+    <br/>
+    <h5>You have no lists to choose from, go ahead and ADD one</h5> 
+    <%= link_to 'Create your first Focus list', new_list_path %> 
 <% end %>

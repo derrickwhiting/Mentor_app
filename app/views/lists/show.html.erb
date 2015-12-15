@@ -1,5 +1,4 @@
-<h1>List#show</h1>
-<p>Find me in app/views/lists/show.html.erb</p>
+<%= render(partial:'layouts/navbar') %>
 
 <%= @list.name %>
 <br />
@@ -8,7 +7,6 @@
 <%= @list.number_of_likes %>
 
 
-<%= render(partial:'layouts/navbar') %>
 <% if @items.any? %>
   <ul>
     <% @items.each do |item| %>
